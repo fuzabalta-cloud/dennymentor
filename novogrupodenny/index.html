@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Denny Aviator — Esse vai ser o último grupo de Aviator que você vai entrar.">
+<meta name="theme-color" content="#000000">
+<title>Denny Aviator — Grupo Oficial</title>
+
+<!-- VTurb Performance -->
+<script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+<link rel="preload" href="https://scripts.converteai.net/ef9987e4-45c8-4851-adea-85ddfad5d0d1/players/69f3d5b081adc197d7d79127/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+<link rel="preload" href="https://cdn.converteai.net/ef9987e4-45c8-4851-adea-85ddfad5d0d1/69f3d5a99d331150eaf61972/main.m3u8" as="fetch">
+<link rel="dns-prefetch" href="https://cdn.converteai.net">
+<link rel="dns-prefetch" href="https://scripts.converteai.net">
+<link rel="dns-prefetch" href="https://images.converteai.net">
+<link rel="dns-prefetch" href="https://api.vturb.com.br">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body {
+    background:#000;
+    color:#fff;
+    font-family:'Inter', -apple-system, sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    min-height: 100vh;
+}
+
+:root {
+    --red: #FF1F2D;
+    --red-bright: #FF3848;
+    --red-deep: #C8101E;
+    --whats: #25D366;
+    --whats-hover: #1ebd5a;
+    --bg: #000;
+    --border: rgba(255, 31, 45, 0.22);
+}
+
+body {
+    background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255, 31, 45, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 50% at 50% 100%, rgba(255, 31, 45, 0.06) 0%, transparent 70%),
+        #000;
+    min-height: 100vh;
+}
+
+.wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* HEADER / LOGO */
+.brand {
+    text-align:center;
+    padding: 36px 20px 20px;
+}
+.brand-name {
+    font-family:'Anton', sans-serif;
+    font-size: clamp(38px, 8.5vw, 60px);
+    letter-spacing: 0.04em;
+    line-height: 0.95;
+    color: #fff;
+    text-transform: uppercase;
+    display:inline-flex;
+    align-items:center;
+    gap: 14px;
+}
+.brand-plane {
+    width: clamp(40px, 8vw, 58px);
+    height: auto;
+    color: var(--red);
+    filter: drop-shadow(0 0 14px rgba(255, 31, 45, 0.6));
+    transform: rotate(-12deg);
+}
+.brand-aviator {
+    font-family:'Anton', sans-serif;
+    color: var(--red);
+    font-style: italic;
+    text-shadow: 0 0 16px rgba(255, 31, 45, 0.4);
+}
+
+/* HEADLINE */
+.headline-wrap {
+    text-align: center;
+    padding: 14px 0 28px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+.headline {
+    font-family:'Anton', sans-serif;
+    font-size: clamp(28px, 7.2vw, 46px);
+    text-transform: uppercase;
+    line-height: 1.05;
+    letter-spacing: 0.01em;
+    color: #fff;
+}
+.headline .red {
+    color: var(--red);
+    text-shadow: 0 0 24px rgba(255, 31, 45, 0.5);
+}
+.headline-sub {
+    margin-top: 18px;
+    color: rgba(255,255,255,0.72);
+    font-size: clamp(14px, 3.6vw, 16px);
+    line-height: 1.55;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.headline-sub strong {
+    color: #fff;
+    font-weight: 700;
+}
+
+/* VIDEO BLOCK */
+.video-wrap {
+    margin: 8px auto 0;
+    width: 100%;
+    max-width: 440px;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #000;
+    border: 1px solid var(--border);
+    box-shadow:
+        0 0 0 1px rgba(0,0,0,0.5),
+        0 30px 80px -20px rgba(255, 31, 45, 0.35),
+        0 10px 30px -8px rgba(0,0,0,0.8);
+    position: relative;
+}
+
+/* CTA — começa escondido, aparece após 35s */
+.cta-wrap {
+    margin: 32px auto 60px;
+    text-align: center;
+    max-width: 480px;
+    width: 100%;
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.cta-wrap.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+.cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: var(--whats);
+    color: #fff;
+    text-decoration: none;
+    padding: 22px 30px;
+    border-radius: 14px;
+    font-weight: 800;
+    font-size: clamp(15px, 4vw, 18px);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    width: 100%;
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,0.06),
+        0 22px 55px -10px rgba(37, 211, 102, 0.6),
+        inset 0 1px 0 rgba(255,255,255,0.18);
+    transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s;
+    position: relative;
+    overflow: hidden;
+    animation: cta-in 0.7s ease both;
+}
+.cta:hover {
+    background: var(--whats-hover);
+    transform: translateY(-2px);
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,0.08),
+        0 30px 65px -10px rgba(37, 211, 102, 0.75),
+        inset 0 1px 0 rgba(255,255,255,0.2);
+}
+.cta:active { transform: translateY(0); }
+.cta-pulse {
+    width: 10px; height:10px; border-radius:50%;
+    background:#fff;
+    box-shadow: 0 0 0 0 rgba(255,255,255,0.7);
+    animation: pulse 1.6s infinite;
+}
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.7); }
+    70% { box-shadow: 0 0 0 14px rgba(255,255,255,0); }
+    100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+}
+@keyframes cta-in {
+    0% { opacity: 0; transform: scale(0.92); }
+    60% { transform: scale(1.04); }
+    100% { opacity: 1; transform: scale(1); }
+}
+.cta-sub {
+    margin-top: 12px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+/* GRAIN */
+.grain {
+    position: fixed; inset: 0; pointer-events:none; z-index:1; opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+}
+
+/* DISCLAIMER FIXO */
+.disclaimer {
+    margin-top: auto;
+    padding: 24px 20px 30px;
+    text-align: center;
+    color: rgba(255,255,255,0.32);
+    font-size: 11px;
+    line-height: 1.55;
+}
+.disclaimer strong { color: rgba(255,255,255,0.55); }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+
+<div class="wrap">
+
+    <!-- LOGO -->
+    <header class="brand">
+        <div class="brand-name">
+            <svg class="brand-plane" viewBox="0 0 64 64" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M58.4 8.5c1.4-1.4 1.4-3.6 0-5s-3.6-1.4-5 0L34.1 22.8 12.6 17.2c-.9-.2-1.9.1-2.5.8L7.4 20.7c-.9.9-.7 2.4.4 3l16 9-9 9-6.5-1.6c-.7-.2-1.5 0-2 .5L4.5 42.5c-.8.8-.6 2.1.4 2.7l8.7 5 5 8.7c.6 1 1.9 1.2 2.7.4l1.9-1.9c.5-.5.7-1.3.5-2L22.1 49l9-9 9 16c.6 1.1 2.1 1.3 3 .4l2.7-2.7c.7-.7 1-1.6.8-2.5L41.2 29.9 58.4 8.5z"/>
+            </svg>
+            DENNY <span class="brand-aviator">AVIATOR</span>
+        </div>
+    </header>
+
+    <!-- HEADLINE -->
+    <div class="headline-wrap">
+        <h1 class="headline">
+            ESSE VAI SER O<br>
+            <span class="red">ÚLTIMO GRUPO</span><br>
+            DE AVIATOR QUE VOCÊ VAI ENTRAR
+        </h1>
+        <p class="headline-sub">
+            Chega de quebrar banca em outro grupo qualquer. Aqui o foco é em <strong>quem opera de verdade</strong> — eu saco e deposito ao vivo, diferente dos gurus por aí.
+        </p>
+    </div>
+
+    <!-- VIDEO VTURB -->
+    <div class="video-wrap">
+        <vturb-smartplayer id="vid-69f3d5b081adc197d7d79127" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer>
+        <script type="text/javascript">
+            var s=document.createElement("script");
+            s.src="https://scripts.converteai.net/ef9987e4-45c8-4851-adea-85ddfad5d0d1/players/69f3d5b081adc197d7d79127/v4/player.js",
+            s.async=!0,document.head.appendChild(s);
+        </script>
+    </div>
+
+    <!-- CTA — APARECE APÓS 35s -->
+    <div class="cta-wrap" id="ctaWrap">
+        <a href="#" class="cta" id="ctaButton">
+            <span class="cta-pulse"></span>
+            CLICA AQUI E ENTRA NO GRUPO
+        </a>
+        <div class="cta-sub">100% gratuito · Vagas limitadas</div>
+    </div>
+
+    <!-- DISCLAIMER -->
+    <div class="disclaimer">
+        <strong>Aviso:</strong> Conteúdo destinado a maiores de 18 anos. Jogue com responsabilidade. Resultados não são garantidos e variam de acordo com cada participante.
+    </div>
+
+</div>
+
+<script>
+    // CONFIG
+    const WHATSAPP_LINK = "https://chat.whatsapp.com/IjaRfDqekNe6Um6cpF9PGZ";
+    const DELAY_SECONDS = 35;
+
+    // Aplica o link nos botões
+    document.getElementById('ctaButton').href = WHATSAPP_LINK;
+
+    // Mostra o CTA após o delay
+    setTimeout(() => {
+        document.getElementById('ctaWrap').classList.add('visible');
+    }, DELAY_SECONDS * 1000);
+</script>
+
+</body>
+</html>
