@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#050505">
+<meta name="description" content="Metodo Denny - Canal VIP Aviator com botoes para Telegram.">
+<title>Metodo Denny | Canal VIP Aviator</title>
+<link rel="icon" href="denny-assets/favicon.ico">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--bg:#050505;
+--card:#111;
+--card-2:#171717;
+--gold:#d7a840;
+--gold-2:#f3d675;
+--green:#22c55e;
+--telegram:#229ed9;
+--telegram-dark:#0088cc;
+--text:#fff;
+--muted:#b7b7b7;
+--border:rgba(255,255,255,.12);
+--font:Montserrat,Inter,Arial,sans-serif;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+font-family:var(--font);
+background:
+radial-gradient(circle at 50% 0%,rgba(215,168,64,.14),transparent 34%),
+radial-gradient(circle at 12% 72%,rgba(34,158,217,.12),transparent 26%),
+var(--bg);
+color:var(--text);
+min-height:100vh;
+overflow-x:hidden;
+}
+body::before{
+content:"";
+position:fixed;
+inset:0;
+pointer-events:none;
+background:linear-gradient(180deg,transparent,rgba(0,0,0,.48)),url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+opacity:.22;
+z-index:-1;
+}
+.page{min-height:100vh;display:flex;flex-direction:column}
+.container{width:100%;max-width:420px;margin:0 auto;padding:0 14px}
+.hero{
+padding:18px 0 16px;
+text-align:center;
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+.eyebrow{
+font-size:26px;
+line-height:1;
+font-weight:900;
+letter-spacing:.08em;
+text-transform:uppercase;
+background:linear-gradient(135deg,#0088cc,#229ed9,#0077b6);
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent;
+margin-bottom:14px;
+white-space:nowrap;
+text-shadow:0 0 28px rgba(34,158,217,.35);
+}
+h1{
+font-size:18px;
+line-height:1.18;
+font-weight:900;
+letter-spacing:.01em;
+text-transform:uppercase;
+max-width:760px;
+margin:0 auto;
+}
+.gold{
+background:linear-gradient(135deg,#b8781b,#f3d675,#d7a840);
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent;
+}
+.hero-copy{
+font-size:14px;
+line-height:1.62;
+color:var(--muted);
+max-width:520px;
+margin:16px auto 18px;
+}
+.hero-copy strong{color:var(--text);font-weight:700}
+.portrait-wrap{
+position:relative;
+width:min(250px,82vw);
+margin:4px auto 18px;
+isolation:isolate;
+}
+.portrait-wrap::before{
+content:"";
+position:absolute;
+inset:-28px;
+background:radial-gradient(circle,rgba(215,168,64,.55),rgba(215,168,64,.18) 36%,transparent 70%);
+filter:blur(24px);
+z-index:-2;
+}
+.portrait-wrap::after{
+content:"";
+position:absolute;
+inset:-10px;
+background:radial-gradient(circle,rgba(215,168,64,.28),transparent 70%);
+filter:blur(12px);
+z-index:-1;
+}
+.portrait{
+display:block;
+width:100%;
+height:auto;
+border-radius:18px;
+border:2px solid rgba(215,168,64,.55);
+box-shadow:0 28px 70px rgba(0,0,0,.62),0 0 44px rgba(215,168,64,.24);
+}
+.cta-area{
+width:100%;
+display:flex;
+flex-direction:column;
+align-items:center;
+padding:0 0 22px;
+}
+.cta-btn{
+width:100%;
+max-width:380px;
+min-height:58px;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+padding:16px 20px;
+border-radius:14px;
+border:0;
+background:linear-gradient(135deg,var(--telegram-dark),var(--telegram),#0077b6);
+color:#fff;
+font-size:16px;
+font-weight:900;
+text-transform:uppercase;
+letter-spacing:.02em;
+text-decoration:none;
+box-shadow:0 0 20px rgba(34,158,217,.5);
+animation:pulse-telegram 2s infinite;
+transition:transform .25s ease,box-shadow .25s ease;
+}
+.cta-btn:hover{transform:scale(1.02);box-shadow:0 0 38px rgba(34,158,217,.72)}
+.cta-btn:active{transform:scale(.98)}
+.cta-btn svg{width:22px;height:22px;flex-shrink:0}
+.arrow{font-size:23px;line-height:1}
+.mini-note{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:7px;
+margin-top:12px;
+font-size:12px;
+color:var(--gold-2);
+}
+.social-proof{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+max-width:360px;
+margin-top:14px;
+padding:10px 16px;
+border:1px solid var(--border);
+border-radius:999px;
+background:rgba(255,255,255,.06);
+backdrop-filter:blur(10px);
+}
+.social-proof svg{width:18px;height:18px;color:var(--telegram)}
+.social-proof span{font-size:12px;color:var(--muted)}
+.social-proof strong{color:#fff;font-weight:700}
+.testimonials{
+padding:28px 0 26px;
+text-align:center;
+}
+.section-head{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+margin-bottom:16px;
+}
+.section-head svg{width:20px;height:20px;color:var(--gold);fill:var(--gold)}
+.section-head h2{
+font-size:18px;
+font-weight:900;
+letter-spacing:.06em;
+text-transform:uppercase;
+}
+.carousel{
+width:100%;
+max-width:420px;
+margin:0 auto;
+position:relative;
+overflow:hidden;
+}
+.slides{
+display:flex;
+gap:14px;
+overflow-x:auto;
+scroll-snap-type:x mandatory;
+scrollbar-width:none;
+padding:4px 6px 8px;
+}
+.slides::-webkit-scrollbar{display:none}
+.slide{
+min-width:100%;
+scroll-snap-align:center;
+}
+.slide img{
+width:100%;
+display:block;
+border-radius:14px;
+border:1px solid var(--border);
+background:var(--card);
+}
+.carousel-hint{
+font-size:11px;
+color:#777;
+margin-top:8px;
+}
+.final{
+padding:26px 0 22px;
+text-align:center;
+}
+.final p{
+font-size:15px;
+line-height:1.55;
+color:#e7e7e7;
+max-width:460px;
+margin:0 auto 18px;
+}
+footer{
+margin-top:auto;
+padding:20px 14px 28px;
+text-align:center;
+}
+footer p{
+max-width:360px;
+margin:0 auto;
+font-size:10px;
+line-height:1.5;
+color:rgba(255,255,255,.5);
+}
+@keyframes pulse-telegram{
+0%,100%{box-shadow:0 0 18px rgba(34,158,217,.42)}
+50%{box-shadow:0 0 38px rgba(34,158,217,.76)}
+}
+@media(min-width:760px){
+.container{max-width:920px}
+.hero{padding-top:42px}
+.eyebrow{font-size:42px}
+h1{font-size:34px}
+.hero-copy{font-size:17px}
+.portrait-wrap{width:320px}
+.carousel{max-width:520px}
+.final p{font-size:18px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+<main>
+<section class="hero">
+<div class="container">
+<div class="eyebrow">SEGREDO REVELADO!</div>
+<h1>
+<span>Tenha acesso as </span><span class="gold">estratégias</span>
+<span> que me fizeram sair do </span><span class="gold">zero</span>
+<span> até os mais de </span><span class="gold">100k mensais</span>
+<span> de lucro no </span><span class="gold">Aviator!</span>
+</h1>
+<p class="hero-copy">
+Clique no botão abaixo para acessar meu <strong>Grupo Vip</strong> de operações.
+Aprenda de vez como parar de devolver lucro e começar a fazer saques diários com consistência.
+</p>
+<div class="portrait-wrap">
+<img src="denny-assets/denny-new-niMVpGN2.jpg" alt="Denny - Especialista em Aviator" class="portrait">
+</div>
+</div>
+</section>
+
+<section class="cta-area">
+<a class="cta-btn" href="https://t.me/+X9csoJc547syZjcx" target="_blank" rel="noopener">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.944 2.667 18.904 18.04c-.23 1.16-1.61 1.6-2.47.78l-3.82-3.55-1.84 1.77c-.2.2-.37.37-.76.37l.27-3.86 7.03-6.35c.31-.27-.07-.42-.47-.15l-8.69 5.47-3.74-1.17c-1.13-.36-1.15-1.13.24-1.67l14.62-5.64c.68-.25 1.27.16 1.05 1.62z"/></svg>
+<span>ENTRAR NO GRUPO VIP</span>
+<span class="arrow">➔</span>
+</a>
+<div class="mini-note">Acesso exclusivo às operações ao vivo.</div>
+<div class="social-proof">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+<span>Mais de <strong>5.000 alunos</strong> lucrando agora.</span>
+</div>
+</section>
+
+<section class="testimonials">
+<div class="container">
+<div class="section-head">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.3 2.95 5.98 6.6.96-4.78 4.66 1.13 6.57L12 17.37l-5.9 3.1 1.13-6.57-4.78-4.66 6.6-.96L12 2.3z"/></svg>
+<h2>Depoimentos Reais</h2>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.3 2.95 5.98 6.6.96-4.78 4.66 1.13 6.57L12 17.37l-5.9 3.1 1.13-6.57-4.78-4.66 6.6-.96L12 2.3z"/></svg>
+</div>
+<div class="carousel" aria-label="Depoimentos reais">
+<div class="slides">
+<div class="slide"><img src="denny-assets/testimonial-1-C2TAF3q-.jpeg" alt="Depoimento 1" loading="lazy"></div>
+<div class="slide"><img src="denny-assets/testimonial-2-B0_aa1GW.jpeg" alt="Depoimento 2" loading="lazy"></div>
+<div class="slide"><img src="denny-assets/testimonial-3-Bys79v19.jpeg" alt="Depoimento 3" loading="lazy"></div>
+</div>
+<p class="carousel-hint">Arraste para ver os depoimentos</p>
+</div>
+</div>
+</section>
+
+<section class="final">
+<div class="container">
+<p>Não perca mais tempo. Entre agora e comece a lucrar!</p>
+<a class="cta-btn" href="https://t.me/+X9csoJc547syZjcx" target="_blank" rel="noopener">
+<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.944 2.667 18.904 18.04c-.23 1.16-1.61 1.6-2.47.78l-3.82-3.55-1.84 1.77c-.2.2-.37.37-.76.37l.27-3.86 7.03-6.35c.31-.27-.07-.42-.47-.15l-8.69 5.47-3.74-1.17c-1.13-.36-1.15-1.13.24-1.67l14.62-5.64c.68-.25 1.27.16 1.05 1.62z"/></svg>
+<span>ENTRAR NO GRUPO VIP</span>
+<span class="arrow">➔</span>
+</a>
+<div class="mini-note">Vagas limitadas. Garanta a sua agora.</div>
+</div>
+</section>
+</main>
+
+<footer>
+<p>Método Denny © 2026. Jogue com responsabilidade. Proibido para menores de 18 anos.</p>
+</footer>
+</div>
+</body>
+</html>
