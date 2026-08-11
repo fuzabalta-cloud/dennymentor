@@ -29,6 +29,52 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   html { scroll-behavior: smooth; }
+<script>
+(function () {
+  var REDIRECT = 'https://n8n.fuzabalta.com.br/webhook/go-grupo';
+
+  function getCookie(name) {
+    var m = document.cookie.match('(^|;)\\s*' + name + '=([^;]+)');
+    return m ? decodeURIComponent(m[2]) : '';
+  }
+
+  function buildUrl() {
+    var p = new URLSearchParams(window.location.search);
+    var q = new URLSearchParams();
+
+    var fbclid = p.get('fbclid') || '';
+    if (fbclid) q.set('fbclid', fbclid);
+
+    var fbc = getCookie('_fbc');
+    if (!fbc && fbclid) fbc = 'fb.1.' + Date.now() + '.' + fbclid;
+    if (fbc) q.set('fbc', fbc);
+
+    var fbp = getCookie('_fbp');
+    if (fbp) q.set('fbp', fbp);
+
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(function (u) {
+      if (p.get(u)) q.set(u, p.get(u));
+    });
+
+    q.set('src', window.location.href.split('?')[0]);
+    return REDIRECT + '?' + q.toString();
+  }
+
+  function apply() {
+    var url = buildUrl();
+    var els = document.querySelectorAll('a[href*="chat.whatsapp.com"], a[data-grupo], [data-grupo] a');
+    els.forEach(function (a) { a.setAttribute('href', url); });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', apply);
+  } else {
+    apply();
+  }
+  // reaplica após 2s (protege contra builders que re-renderizam os botões)
+  setTimeout(apply, 2000);
+})();
+</script>
 
   body {
     font-family: 'Manrope', -apple-system, sans-serif;
