@@ -29,52 +29,6 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   html { scroll-behavior: smooth; }
-<script>
-(function () {
-  var REDIRECT = 'https://n8n.fuzabalta.com.br/webhook/go-grupo';
-
-  function getCookie(name) {
-    var m = document.cookie.match('(^|;)\\s*' + name + '=([^;]+)');
-    return m ? decodeURIComponent(m[2]) : '';
-  }
-
-  function buildUrl() {
-    var p = new URLSearchParams(window.location.search);
-    var q = new URLSearchParams();
-
-    var fbclid = p.get('fbclid') || '';
-    if (fbclid) q.set('fbclid', fbclid);
-
-    var fbc = getCookie('_fbc');
-    if (!fbc && fbclid) fbc = 'fb.1.' + Date.now() + '.' + fbclid;
-    if (fbc) q.set('fbc', fbc);
-
-    var fbp = getCookie('_fbp');
-    if (fbp) q.set('fbp', fbp);
-
-    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(function (u) {
-      if (p.get(u)) q.set(u, p.get(u));
-    });
-
-    q.set('src', window.location.href.split('?')[0]);
-    return REDIRECT + '?' + q.toString();
-  }
-
-  function apply() {
-    var url = buildUrl();
-    var els = document.querySelectorAll('a[href*="chat.whatsapp.com"], a[data-grupo], [data-grupo] a');
-    els.forEach(function (a) { a.setAttribute('href', url); });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', apply);
-  } else {
-    apply();
-  }
-  // reaplica após 2s (protege contra builders que re-renderizam os botões)
-  setTimeout(apply, 2000);
-})();
-</script>
 
   body {
     font-family: 'Manrope', -apple-system, sans-serif;
@@ -741,6 +695,75 @@
     <span>Jogue com responsabilidade. Autorização SPA nº 260/2025. Ministério da Fazenda adverte: <em>aposta não é investimento.</em></span>
   </div>
 </footer>
+
+
+<!-- ============ FACEBOOK PIXEL ============ -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1651636499445565');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1651636499445565&ev=PageView&noscript=1"/></noscript>
+<!-- ======================================== -->
+
+<!-- ============ TRACKEAMENTO GRUPO WHATSAPP ============ -->
+<script>
+(function () {
+  var REDIRECT = 'https://n8n.fuzabalta.com.br/webhook/go-grupo';
+
+  function getCookie(name) {
+    var m = document.cookie.match('(^|;)\\s*' + name + '=([^;]+)');
+    return m ? decodeURIComponent(m[2]) : '';
+  }
+
+  function buildUrl() {
+    var p = new URLSearchParams(window.location.search);
+    var q = new URLSearchParams();
+
+    var fbclid = p.get('fbclid') || '';
+    if (fbclid) q.set('fbclid', fbclid);
+
+    var fbc = getCookie('_fbc');
+    if (!fbc && fbclid) fbc = 'fb.1.' + Date.now() + '.' + fbclid;
+    if (fbc) q.set('fbc', fbc);
+
+    var fbp = getCookie('_fbp');
+    if (fbp) q.set('fbp', fbp);
+
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(function (u) {
+      if (p.get(u)) q.set(u, p.get(u));
+    });
+
+    q.set('src', window.location.href.split('?')[0]);
+    return REDIRECT + '?' + q.toString();
+  }
+
+  function apply() {
+    var url = buildUrl();
+    var els = document.querySelectorAll('a[href*="chat.whatsapp.com"], a[data-grupo], [data-grupo] a');
+    els.forEach(function (a) { a.setAttribute('href', url); });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', apply);
+  } else {
+    apply();
+  }
+  // reaplica apos 2s (protege contra builders que re-renderizam os botoes)
+  setTimeout(apply, 2000);
+  // ultima garantia: reescreve no proprio clique
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href*="chat.whatsapp.com"], a[href*="/webhook/go-grupo"], a[data-grupo], [data-grupo] a') : null;
+    if (a) a.setAttribute('href', buildUrl());
+  }, true);
+})();
+</script>
+<!-- ==================================================== -->
 
 </body>
 </html>
